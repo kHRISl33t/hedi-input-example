@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Input from './Input'
 
 function App() {
-  const [formValues, setFormValues] = useState({ myFormName: '', mySecondFormName: '' })
+  const [formValues, setFormValues] = useState({ myFormField: '', myFormFieldAnother: '' })
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -13,10 +13,26 @@ function App() {
   return (
     <div className="App">
       <form onSubmit={onSubmit}>
-        <Input label="myInputLabel" name="myFormName" formValues={formValues} setFormValues={setFormValues} />
-        <Input label="mySecondInputLabel" name="mySecondFormName" formValues={formValues} setFormValues={setFormValues} />
+        <Input
+          label="myInputLabel"
+          name="myFormField"
+          formValues={formValues}
+          setFormValues={setFormValues}
+          someOtherArgs={() => { }}
+          someAnotherArgs={() => { }}
+        />
+        <Input
+          label="mySecondInputLabel"
+          name="myFormFieldAnother"
+          formValues={formValues}
+          setFormValues={setFormValues}
+        />
         <input type="submit" value="Submit" />
       </form>
+      <br />
+      <p>myInputLabel value: {formValues.myFormField}</p>
+      <br />
+      <p>mySecondInputLabel value: {formValues.myFormFieldAnother}</p>
     </div>
   );
 }

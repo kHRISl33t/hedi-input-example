@@ -1,23 +1,23 @@
-export default function Input(props) {
+export default function Input({ formValues, setFormValues, name, label, ...rest }) {
   const onChange = (event) => {
     console.log({
       message: 'Input component',
-      props,
-      inputName: props.name,
-      inputLabel: props.label,
+      inputName: name,
+      inputLabel: label,
       onChangeValue: event.target.value
     })
-    props.setFormValues({ ...props.formValues, [props.name]: event.target.value })
+    setFormValues({ ...formValues, [name]: event.target.value })
   }
 
   return (
     <label>
-      {props.label}:
+      {label}:
       <input
         type="text"
-        name={props.name}
+        name={name}
         onChange={onChange}
-        value={props.formValues[props.name]}
+        value={formValues[name]}
+        {...rest}
       />
     </label>
   )
